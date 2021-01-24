@@ -3,7 +3,7 @@
 
 ## users テーブル
 | Column             | Type   | Options                       |
-| ------------------ | ------ | -----------                   |
+| ------------------ | ------ | ----------------------------- |
 | nickname           | string | null: false                   |
 | email              | string | null: false, uniqueness: true |
 | encrypted_password | string | null: false                   |
@@ -11,29 +11,29 @@
 | first_name         | string | null: false                   |
 | kana_last_name     | string | null: false                   |
 | kana_first_name    | string | null: false                   |
-| birthdate          | date   | null: false                   |
+| birthday           | date   | null: false                   |
 
 # Association
 * has_many :items
-* has_many :buy_history
+* has_many :buy_historys
 
 
 
 ## items テーブル
-| Column          | Type       | Options     |
-| ----------------| ---------- | ----------- |
-| item_name       | string     | null: false |
-| detail          | text       | null: false |
-| category_id     | integer    | null: false |
-| condition_id    | integer    | null: false |
-| delivery_fee    | integer    | null: false |
-| shipping_area   | integer    | null: false |
-| shipping_day    | integer    | null: false |
-| buyer           | integer    | null: false |
-| user            | references | null: false |
+| Column           | Type       | Options                        |
+| -----------------| ---------- | ------------------------------ |
+| item_name        | string     | null: false                    |
+| detail           | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| delivery_fee_id  | integer    | null: false                    |
+| prefectures_id   | integer    | null: false                    |
+| shipping_day_id  | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 # Association
-* belong_to :user
+* belongs_to :user
 * has_one :buy_history
 
 ## shipping_address テーブル
@@ -48,7 +48,7 @@
 | buy_history      | references | null：false、foreign_key：true |
 
 # Association
-* has_many :user
+* has_many :buy_history
 
 
 ## buy_history テーブル
@@ -58,6 +58,6 @@
 | item    | references | null: false, foreign_key: true |
 
 # Association
-* belong_to :items
-* belong_to :user
+* belongs_to :item
+* belongs_to :user
 * has_one :shipping_address
