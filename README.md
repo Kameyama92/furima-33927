@@ -5,7 +5,7 @@
 | Column             | Type   | Options                       |
 | ------------------ | ------ | ----------------------------- |
 | nickname           | string | null: false                   |
-| email              | string | null: false, uniqueness: true |
+| email              | string | null: false, unique:true      |
 | encrypted_password | string | null: false                   |
 | last_name          | string | null: false                   |
 | first_name         | string | null: false                   |
@@ -15,7 +15,7 @@
 
 # Association
 * has_many :items
-* has_many :buy_historys
+* has_many :buy_histories
 
 
 
@@ -27,7 +27,7 @@
 | category_id      | integer    | null: false                    |
 | condition_id     | integer    | null: false                    |
 | delivery_fee_id  | integer    | null: false                    |
-| prefectures_id   | integer    | null: false                    |
+| prefecture_id   | integer    | null: false                    |
 | shipping_day_id  | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
@@ -51,7 +51,7 @@
 * belong_to :buy_history
 
 
-## buy_history テーブル
+## buy_histories テーブル
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | user    | references | null: false, foreign_key: true |
