@@ -36,11 +36,11 @@
 * belongs_to :user
 * has_one :buy_history
 
-## shipping_address テーブル
+## shipping_addresses テーブル
 | Column           | Type       | Options                       |
 | ---------------- | ---------- | ----------------------------- |
 | postal_code      | string     | null: false                   |
-| prefectures_id   | integer    | null: false                   |
+| prefecture_id    | integer    | null: false                   |
 | city             | string     | null: false                   |
 | address_detail   | string     | null: false                   |
 | apartment_name   | string     |                               |
@@ -48,7 +48,7 @@
 | buy_history      | references | null：false、foreign_key：true |
 
 # Association
-* has_many :buy_history
+* belong_to :buy_history
 
 
 ## buy_history テーブル
