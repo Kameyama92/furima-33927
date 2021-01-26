@@ -8,7 +8,7 @@ class User < ApplicationRecord  # :confirmable, :lockable, :timeoutable, :tracka
       
         # バリデーションー空ではないことを記述
       with_options presence: true do
-          validates :nick_name
+          validates :nickname
           validates :birthday
           validates :email,:password,:password_confirmation
         end
@@ -21,8 +21,8 @@ class User < ApplicationRecord  # :confirmable, :lockable, :timeoutable, :tracka
 
         # 正規表現ー全角のカナでのカウントのみ許可
       with_options presence: true, format: { with: /\A[ァ-ヶ]+\z/, message: '全角文字でカナを使用してください' } do
-        validates :first_name_kana
-        validates :last_name_kana
+        validates :kana_first_name
+        validates :kana_last_name
         end
         
 end
