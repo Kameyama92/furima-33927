@@ -1,11 +1,34 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-
+  belongs_to :condition
+  belongs_to :delivery_fee
+  belongs_to :prefecture
+  belongs_to :shipping_day
+  
   belongs_to :user
 
-  #空の投稿を保存できないようにする
-  validates :title, :text, presence: true
+  has_one_attached :image
 
-    #ジャンルの選択が「--」の時は保存できないようにする
-  validates :category_id, numericality: { other_than: 1 } 
+
+  #空の投稿を保存できないようにする
+  with_options presence: true do
+    validates :image
+    validates :item_name
+    validates :detail
+    validates :price
+  end
+  # validates :text, presence: true
+
+  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10000000, message: "上記の販売価格を半角数字で入力してください"}
+
+    #ジャンルの選択が「--」の時は保存できない
+    with_options numericality: { other_than: 1 } do
+      validates :category_id
+      validates :condition_id
+      validates :delivery_fee_id
+      validates :prefecture_id
+      validates :shipping_day_id
+    end
+  # validates :category_id, numericality: { other_than: 1 } 
 end
