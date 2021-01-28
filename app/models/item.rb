@@ -18,7 +18,6 @@ class Item < ApplicationRecord
     validates :detail
     validates :price
   end
-  # validates :text, presence: true
 
   validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10000000, message: "上記の販売価格を半角数字で入力してください"}
 
@@ -30,5 +29,4 @@ class Item < ApplicationRecord
       validates :prefecture_id
       validates :shipping_day_id
     end
-  # validates :category_id, numericality: { other_than: 1 } 
 end
