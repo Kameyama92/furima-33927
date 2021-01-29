@@ -134,7 +134,7 @@
           <%# 画像の繰り返し処理 %>
           <%= image_tag item.image, class: "item-img" %>
           <%# 商品が売れていればsold outを表示する記述 %>
-          <% if item.buy_histories.present? %>
+          <% if item.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
@@ -157,6 +157,7 @@
             </div>
           </div>
         </div>
+        <% end %>
       </li>
       <% end %>
       <%# //商品出品がある場合、中身のすべてを展開している記述  %>
