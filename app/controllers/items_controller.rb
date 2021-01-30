@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :move_to_index, only: [:edit]
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :move_to_index, only: [:edit, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -30,7 +30,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    
     if @item.update(item_params)
       redirect_to item_path
     else
@@ -38,6 +37,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    if @item.destroy(item_params)
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
 
 
   private
