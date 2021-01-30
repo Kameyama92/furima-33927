@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, onry: [:new, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :destroy]
-  before_action :set_item, only: [:show, :edit, :updat, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
     if @item.destroy(item_params)
       redirect_to root_path
     else
-      render :destroy
+      render :edit
     end
   end
 
