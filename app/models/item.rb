@@ -1,4 +1,9 @@
 class Item < ApplicationRecord
+
+  belongs_to :user
+  has_one :buy_history
+  has_one_attached :image
+  
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
@@ -6,9 +11,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :shipping_day
   
-  belongs_to :user
 
-  has_one_attached :image
 
 
   #空の投稿を保存できないようにする
