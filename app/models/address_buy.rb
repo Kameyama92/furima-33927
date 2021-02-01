@@ -25,6 +25,6 @@ class AddressBuy
     # 購入記録の情報を保存し、「buy_histories」という変数に入れている
     buy_histories = BuyHistory.create(user_id: user_id, item_id: item_id)
     # 住所の情報を保存
-    ShippingAddress.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address_detail: address_detail, apartment_name: apartment_name, phone_number: phone_number, buy_history_id: buy_history.id)
+    ShippingAddress.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address_detail: address_detail, apartment_name: apartment_name, phone_number: phone_number, buy_history_id: buy_histories.id)
   end
 end
