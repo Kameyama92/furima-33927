@@ -1,6 +1,6 @@
 class BuyHistoriesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
-  before_action :set_item, only: [:index, :address_params]
+  before_action :set_item, only: [:index, :address_params, :create]
 
   def index
     @address_buy = AddressBuy.new
