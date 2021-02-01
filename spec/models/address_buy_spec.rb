@@ -3,7 +3,13 @@ require 'rails_helper'
 RSpec.describe AddressBuy, type: :model do
 
   before do
-    @address_buy = FactoryBot.build(:address_buy)
+    # @address_buy = FactoryBot.build(:address_buy)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    # @address_buy.item_id = @item.id
+    # @address_buy.user_id = @user.id
+    @address_buy = FactoryBot.build(:address_buy, user_id: user.id, item_id: item.id)
+    sleep 0.2
   end
 
   describe "商品の購入" do
