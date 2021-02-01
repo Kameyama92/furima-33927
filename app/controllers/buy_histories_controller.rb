@@ -1,9 +1,8 @@
 class BuyHistoriesController < ApplicationController
-
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_item, only: [:index, :address_params]
 
   def index
-    @item = Item.find(params[:item_id])
     @address_buy = AddressBuy.new
     if current_user.id == @item.user_id || @item.buy_history.present?
       redirect_to root_path
@@ -24,7 +23,6 @@ class BuyHistoriesController < ApplicationController
   private
 
   def address_params
-    @item = Item.find(params[:item_id])
     params.require(:address_buy).permit(:postal_code, :prefecture_id, :city, :address_detail, :apartment_name, :phone_number).merge(token: params[:token], user_id: current_user.id, item_id: @item.id)
   end
 
@@ -36,4 +34,9 @@ class BuyHistoriesController < ApplicationController
       currency: 'jpy'                   # 通貨の種類（日本円）
     )
   end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
 end

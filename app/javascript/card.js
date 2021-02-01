@@ -18,8 +18,6 @@ const pay = () => {
       exp_year: `20${formData.get("address_buy[exp_year]")}`,
     };
 
-console.log(card)
-
     // カード情報をPAY.JP側に送りトークン化
     // 第一引数のcardは、PAY.JP側に送るカードの情報で、直前で定義したカード情報のオブジェクトが入る
     // 第二引数のcallbackには、PAY.JP側からトークンが送付された後に実行する処理を記述

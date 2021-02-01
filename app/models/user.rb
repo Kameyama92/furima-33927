@@ -3,7 +3,7 @@ class User < ApplicationRecord  # :confirmable, :lockable, :timeoutable, :tracka
         :recoverable, :rememberable, :validatable
 
         has_many :items
-        has_many :buy_history
+        has_many :buy_histories
 
         # パスワードのバリデーションーPASSWORD_REGEXに条件を代入している。
         PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze

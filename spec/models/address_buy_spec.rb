@@ -33,7 +33,7 @@ RSpec.describe AddressBuy, type: :model do
       end
 
       it "郵便番号にハイフンがなければ購入できない" do
-        @address_buy.postal_code = 12345567
+        @address_buy.postal_code = "12345567"
         @address_buy.valid?
         expect(@address_buy.errors.full_messages).to include("Postal code Postal code Input correctly")
       end
