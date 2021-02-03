@@ -26,7 +26,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
+    if @item.buy_history.present?
+      redirect_to root_path
+    end
   end
 
   def update
@@ -38,7 +40,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.destroy(item_params)
+    if @item.destroy
       redirect_to root_path
     else
       render :show
